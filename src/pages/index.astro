@@ -3,25 +3,32 @@ import Layout from '../layouts/Layout.astro';
 import Markdown from '../components/Markdown.astro';
 
 const explainer = `
-**AmicBridge is a private access desk for capital and opportunities.**
+**AmicBridge is a private introduction desk for capital and opportunities.**
 
-We connect private people who *have* money with people and projects that *need* it.
+We quietly connect individuals who have capital with individuals and projects that need it.
+No sign-ups, no public listings, no accounts to create — everything happens privately.
 
-We never hold funds, move money, or guarantee any agreement.  
-All transfers, contracts, and decisions happen directly between the people involved.
+We never hold funds, arrange payments, or guarantee outcomes.  
+Our role is limited to **information and introductions** between interested parties.
 
-### Who AmicBridge is for
-- People who want to deploy capital privately (loans, co-investment, private deals).  
-- People who need funding for a project, property, or opportunity.  
-- People who prefer discreet introductions and curated matches over public marketplaces.
+### How AmicBridge Works
+1. You tell us discreetly what you need or what you offer.  
+2. We search our private network for a suitable counterpart.  
+3. If you want a direct connection, you unlock their details for a small fee.
 
-### How it works
-1. Tell us who you are and what you’re looking for.  
-2. We look for a potential match inside our private network.  
-3. When you want to speak directly with that person, you unlock their contact via a small fee.
+All financial decisions, agreements, and transfers happen *outside* AmicBridge,  
+strictly between you and the other party.
 
-AmicBridge is about **discreet connection**, not control.  
-We stay out of the money. You stay in charge of every decision.
+### What You Can Use AmicBridge For
+– Private lending  
+– Private borrowing  
+– Property-related capital needs  
+– Small business funding  
+– Private co-investment opportunities  
+– Connecting with people who prefer discretion over public marketplaces
+
+AmicBridge is built on **privacy, discretion, and direct human connection**.
+We stay outside the deal. You stay in full control.
 `;
 ---
 
@@ -30,75 +37,65 @@ We stay out of the money. You stay in charge of every decision.
   <!-- HERO -->
   <section class="mb-10">
     <h1 class="text-4xl sm:text-5xl font-bold mb-4">
-      Private capital connections, on your terms.
+      Discreet connections between capital and opportunity.
     </h1>
     <p class="text-slate-300 text-lg max-w-2xl">
-      AmicBridge gives you curated introductions between people with capital and people with serious opportunities.
-      No public bidding, no platforms holding your money – just direct, private connections.
+      A private desk for individuals seeking capital or offering it.  
+      No platforms holding your money — just confidential introductions with real people.
     </p>
   </section>
 
-  <!-- MAIN EXPLAINER -->
+  <!-- MAIN TEXT -->
   <section class="mb-10">
     <Markdown content={explainer} class="text-lg leading-relaxed" />
   </section>
 
-  <!-- PRIMARY ACTIONS -->
-  <section class="space-y-6 mb-14">
-    <!-- Create Profile Button -->
+  <!-- ACTION BUTTONS -->
+  <section class="flex flex-wrap gap-6 mb-14">
+
+    <!-- Need Capital -->
     <a 
-      href="https://wa.me/4792928373?text=Hi%2C+I+want+to+create+a+profile+on+AmicBridge"
+      href="https://wa.me/4792928373?text=Hi%2C+I+need+capital+through+AmicBridge"
       target="_blank"
-      class="bg-blue-400 hover:bg-blue-500 text-slate-900 font-semibold px-10 py-3 rounded-lg inline-block text-center shadow-lg"
+      class="bg-rose-400 hover:bg-rose-500 text-slate-900 font-semibold px-12 py-4 rounded-lg shadow-lg"
     >
-      Create My Profile via WhatsApp
+      I Need Capital
     </a>
 
-    <div class="flex flex-wrap gap-6 mt-4">
-      <!-- Need Capital -->
-      <a 
-        href="https://wa.me/4792928373?text=Hi%2C+I+need+capital+through+AmicBridge"
-        target="_blank"
-        class="bg-rose-400 hover:bg-rose-500 text-slate-900 font-semibold px-12 py-4 rounded-lg block text-center shadow-lg"
-      >
-        I Need Capital
-      </a>
+    <!-- Have Capital -->
+    <a 
+      href="https://wa.me/4792928373?text=Hi%2C+I+have+capital+and+want+opportunities+via+AmicBridge"
+      target="_blank"
+      class="bg-rose-400 hover:bg-rose-500 text-slate-900 font-semibold px-12 py-4 rounded-lg shadow-lg"
+    >
+      I Have Capital to Deploy
+    </a>
 
-      <!-- Have Capital -->
-      <a 
-        href="https://wa.me/4792928373?text=Hi%2C+I+have+capital+and+want+opportunities+via+AmicBridge"
-        target="_blank"
-        class="bg-rose-400 hover:bg-rose-500 text-slate-900 font-semibold px-12 py-4 rounded-lg block text-center shadow-lg"
-      >
-        I Have Capital to Deploy
-      </a>
-    </div>
   </section>
 
-  <!-- PRICING & UNLOCK MODEL -->
+  <!-- PRICING MODEL -->
   <section class="mt-8 max-w-2xl space-y-4">
-    <h2 class="text-2xl font-semibold">How you pay AmicBridge</h2>
+    <h2 class="text-2xl font-semibold">How You Pay AmicBridge</h2>
 
     <p class="text-slate-300">
-      AmicBridge does not charge a percentage of your deal and never touches the money you move.
-      You only pay us for **access and introductions**.
+      AmicBridge does not take a percentage of your deal and never touches your money.
+      You only pay for **private introductions**.
     </p>
 
     <ul class="list-disc list-inside text-slate-300 space-y-1">
-      <li>You first contact us on WhatsApp and describe your situation.</li>
-      <li>We look for a match inside our private network.</li>
-      <li>When you want to speak directly with that person, you pay a one-time unlock fee.</li>
+      <li>You message us privately via WhatsApp.</li>
+      <li>We confirm whether we have a suitable match.</li>
+      <li>You pay a small unlock fee to receive the direct contact details.</li>
     </ul>
 
     <p class="text-slate-300">
-      Standard unlock fee: <strong>799 NOK per contact</strong>.
+      Unlock fee: <strong>499 NOK per contact</strong>.
     </p>
 
     <p class="text-slate-400 text-sm">
-      Payment is handled directly with AmicBridge (for example via Vipps to <strong>92928373</strong>).
-      After payment is confirmed, we send you the direct contact details of the matching person or opportunity.
-      All negotiations, agreements, and money transfers are strictly between you and the other party –
-      AmicBridge never holds or manages client funds and does not guarantee any outcome.
+      Payments are handled directly with AmicBridge (e.g., Vipps to <strong>92928373</strong>).  
+      AmicBridge never manages client funds and does not offer financial advice.  
+      All agreements remain strictly between the private parties involved.
     </p>
   </section>
 
