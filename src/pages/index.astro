@@ -11,15 +11,15 @@ AmicBridge is a meeting place where people can find each other, talk, and make p
 ### How It Works
 1. Create a profile as a lender or borrower.  
 2. Post what you’re offering or looking for.  
-3. Use our messaging system to connect privately.  
+3. Use our messaging system to connect privately.
 
 Everything about money happens *outside* our platform — we are only the bridge between people.
 
 ### What You Can Do Here
-- Create a verified profile.
-- Post borrower requests or lender offers.
-- Communicate privately and securely.
-- Build trust with ratings and reviews.
+- Create a verified profile.  
+- Post borrower requests or lender offers.  
+- Communicate privately and securely.  
+- Build trust with ratings and reviews.  
 - Follow clear safety guidelines to stay protected.
 
 AmicBridge is about **connection**, not control.  
@@ -27,13 +27,32 @@ You stay in charge of your agreements — we simply help you meet the right peop
 `;
 ---
 
-<Layout title="AmicBridge — Connecting Lenders and Borrowers">
-  <h1 class="mb-10">Welcome to AmicBridge</h1>
+<Layout title="Welcome to AmicBridge">
 
-  <Markdown content={explainer} class="mb-10 text-lg" />
+  <h1 class="text-5xl font-bold mb-8">Welcome to AmicBridge</h1>
 
-  <p>
-    <a href="/borrowers" class="btn btn-lg sm:min-w-64">I Need a Loan</a>
-    <a href="/lenders" class="btn btn-lg sm:min-w-64 ml-4">I Want to Lend</a>
-  </p>
+  <Markdown content={explainer} class="mb-12 text-lg leading-relaxed" />
+
+  <div class="flex flex-wrap gap-6 mt-10">
+
+    <!-- UPDATED WHATSAPP BUTTON -->
+    <a 
+      href="https://wa.me/4792928373?text=Hi%2C+I+need+a+loan+from+AmicBridge"
+      target="_blank"
+      class="bg-rose-400 hover:bg-rose-500 text-slate-900 font-semibold px-12 py-4 rounded-lg block text-center shadow-lg"
+    >
+      I Need a Loan
+    </a>
+
+    <!-- OPTIONAL: Update lender button later -->
+    <a 
+      href="https://wa.me/4792928373?text=Hi%2C+I+want+to+lend+money+through+AmicBridge"
+      target="_blank"
+      class="bg-rose-400 hover:bg-rose-500 text-slate-900 font-semibold px-12 py-4 rounded-lg block text-center shadow-lg"
+    >
+      I Want to Lend
+    </a>
+
+  </div>
+
 </Layout>
