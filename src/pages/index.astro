@@ -3,27 +3,27 @@ import Layout from '../layouts/Layout.astro';
 import Markdown from '../components/Markdown.astro';
 
 const explainer = `
-**AmicBridge connects private lenders and private borrowers — safely and simply.**
+**AmicBridge connects people to exclusive private opportunities — safely and directly.**
 
-We do not hold money, approve loans, or guarantee agreements.  
-AmicBridge is a meeting place where people can find each other, talk, and make private arrangements on their own terms.
+We don’t hold money or approve transactions.  
+We simply help people discover each other, talk privately, and make their own agreements.
 
 ### How It Works
-1. Create a profile as a lender or borrower.  
-2. Post what you’re offering or looking for.  
-3. Use our messaging system to connect privately.
+1. Create a profile.  
+2. Browse opportunities or describe what you’re looking for.  
+3. Connect privately with the right people.
 
-Everything about money happens *outside* our platform — we are only the bridge between people.
+All financial decisions happen *outside* our platform — we are the bridge, not the middleman.
 
 ### What You Can Do Here
-- Create a verified profile.  
-- Post borrower requests or lender offers.  
-- Communicate privately and securely.  
-- Build trust with ratings and reviews.  
-- Follow clear safety guidelines to stay protected.
+– Access exclusive private opportunities.  
+– Connect directly with private lenders, borrowers, or investors.  
+– Communicate securely and privately.  
+– Build trust with verified profiles.  
+– Stay safe with clear guidelines.
 
 AmicBridge is about **connection**, not control.  
-You stay in charge of your agreements — we simply help you meet the right people.
+You stay in charge — we simply help you meet the right people.
 `;
 ---
 
@@ -32,7 +32,7 @@ You stay in charge of your agreements — we simply help you meet the right peop
   <!-- Main Title -->
   <h1 class="text-5xl font-bold mb-8">Welcome to AmicBridge</h1>
 
-  <!-- Markdown Content -->
+  <!-- Main Text -->
   <Markdown content={explainer} class="mb-12 text-lg leading-relaxed" />
 
   <!-- Create Profile Button -->
@@ -49,20 +49,20 @@ You stay in charge of your agreements — we simply help you meet the right peop
 
     <!-- Loan Button -->
     <a 
-      href="https://wa.me/4792928373?text=Hi%2C+I+need+a+loan+from+AmicBridge"
+      href="https://wa.me/4792928373?text=Hi%2C+I+need+a+loan+through+AmicBridge"
       target="_blank"
       class="bg-rose-400 hover:bg-rose-500 text-slate-900 font-semibold px-12 py-4 rounded-lg block text-center shadow-lg"
     >
       I Need a Loan
     </a>
 
-    <!-- Lend Button -->
+    <!-- Lend / Invest Button -->
     <a 
-      href="https://wa.me/4792928373?text=Hi%2C+I+want+to+lend+money+through+AmicBridge"
+      href="https://wa.me/4792928373?text=Hi%2C+I+want+to+offer+capital+through+AmicBridge"
       target="_blank"
       class="bg-rose-400 hover:bg-rose-500 text-slate-900 font-semibold px-12 py-4 rounded-lg block text-center shadow-lg"
     >
-      I Want to Lend
+      I Want to Lend / Invest
     </a>
 
   </div>
@@ -72,24 +72,26 @@ You stay in charge of your agreements — we simply help you meet the right peop
     <h2 class="text-2xl font-semibold">Payment for unlocking contact</h2>
 
     <p class="text-slate-300">
-      AmicBridge does not charge any fee on the loan itself. Instead, we charge a small fee
-      when you want to unlock the contact details of a lender or borrower that matches you.
+      AmicBridge does not take part in your agreements or charge any fee on the money you move.
+      Instead, we charge a small fee when you want to unlock the direct contact details of a
+      person or opportunity that matches you.
     </p>
 
     <ul class="list-disc list-inside text-slate-300 space-y-1">
-      <li>You first contact us on WhatsApp and tell us what you need.</li>
-      <li>We look for a suitable lender or borrower in our network.</li>
+      <li>You first contact us on WhatsApp and tell us what you are looking for.</li>
+      <li>We search our network for a suitable match.</li>
       <li>When you want their direct contact details, you pay a one-time unlock fee.</li>
     </ul>
 
     <p class="text-slate-300">
-      Current unlock fee: <strong>500 NOK per contact</strong>.
+      Current unlock fee: <strong>49 NOK per contact</strong>.
     </p>
 
     <p class="text-slate-400 text-sm">
-      Payment is handled directly with AmicBridge (for example via whatsapp to <strong>92928373</strong>).
-      After payment is confirmed, we send you the contact details of the lender or borrower.
-      All loan agreements and money transfers still happen privately between you and the other person.
+      Payment is handled directly with AmicBridge (for example via Vipps to <strong>92928373</strong>).
+      After payment is confirmed, we send you the contact details of the matching person or opportunity.
+      All agreements and money transfers still happen privately between you and the other party — 
+      AmicBridge never holds or manages client funds.
     </p>
   </section>
 
