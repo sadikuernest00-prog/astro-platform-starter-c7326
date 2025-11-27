@@ -121,6 +121,10 @@ const featuresLender = [
         cursor: pointer;
         background: transparent;
         color: var(--text);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
       .btn-primary {
         background: var(--accent);
@@ -185,6 +189,23 @@ const featuresLender = [
       .fake-input strong {
         font-weight: 500;
       }
+
+      /* editable fields inside the preview card */
+      .fake-field {
+        background: transparent;
+        border: none;
+        color: var(--text);
+        font-size: 0.9rem;
+        text-align: right;
+        width: 60%;
+      }
+      .fake-field::placeholder {
+        color: var(--muted);
+      }
+      .fake-field:focus {
+        outline: none;
+      }
+
       .toggle-row {
         display: flex;
         gap: 0.6rem;
@@ -231,6 +252,45 @@ const featuresLender = [
       .feature-card li + li {
         margin-top: 0.25rem;
       }
+
+      /* Borrow form styling */
+      .borrow-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-top: 0.8rem;
+      }
+      .borrow-row {
+        display: grid;
+        gap: 0.7rem;
+      }
+      @media (min-width: 700px) {
+        .borrow-row {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      .borrow-input,
+      .borrow-textarea {
+        width: 100%;
+        padding: 0.55rem 0.7rem;
+        border-radius: 0.55rem;
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        background: rgba(15, 23, 42, 0.8);
+        color: var(--text);
+        font-size: 0.9rem;
+      }
+      .borrow-input::placeholder,
+      .borrow-textarea::placeholder {
+        color: var(--muted);
+      }
+      .borrow-textarea {
+        resize: vertical;
+      }
+      .borrow-submit {
+        margin-top: 0.3rem;
+        align-self: flex-start;
+      }
+
       footer {
         margin-top: 2.5rem;
         font-size: 0.75rem;
@@ -274,8 +334,13 @@ const featuresLender = [
             </p>
 
             <div class="cta-row">
-              <button class="btn btn-primary">I want to borrow</button>
-              <button class="btn btn-outline">I want to lend</button>
+              <!-- button now scrolls to the form -->
+              <a href="#borrow-form" class="btn btn-primary">
+                I want to borrow
+              </a>
+              <button class="btn btn-outline">
+                I want to lend
+              </button>
             </div>
             <p class="tiny-note">
               Accounts, messaging and full matching are coming soon. For now,
@@ -291,26 +356,48 @@ const featuresLender = [
               </div>
 
               <p class="inline-label">Borrower</p>
+
               <div class="fake-input">
                 <span>Amount</span>
-                <strong>€2,000</strong>
+                <input
+                  class="fake-field"
+                  type="number"
+                  name="preview-amount"
+                  placeholder="2000"
+                />
               </div>
 
               <div class="input-row">
                 <div class="fake-input">
-                  <span>Duration</span>
-                  <strong>6 months</strong>
+                  <span>Duration (months)</span>
+                  <input
+                    class="fake-field"
+                    type="number"
+                    name="preview-duration"
+                    placeholder="6"
+                  />
                 </div>
                 <div class="fake-input">
-                  <span>Max interest</span>
-                  <strong>5%</strong>
+                  <span>Max interest (%)</span>
+                  <input
+                    class="fake-field"
+                    type="number"
+                    step="0.1"
+                    name="preview-max-interest"
+                    placeholder="5"
+                  />
                 </div>
               </div>
 
               <p class="inline-label">Lender</p>
               <div class="fake-input">
-                <span>Offer</span>
-                <strong>€2,000 · 4.5% APR</strong>
+                <span>Offer (€)</span>
+                <input
+                  class="fake-field"
+                  type="number"
+                  name="preview-offer"
+                  placeholder="2000"
+                />
               </div>
 
               <div class="toggle-row">
@@ -338,6 +425,72 @@ const featuresLender = [
             <ul>
               {featuresLender.map((item) => <li>{item}</li>)}
             </ul>
+          </div>
+        </section>
+
+        <!-- BORROW FORM SECTION -->
+        <section id="borrow-form" class="features" style="margin-top: 3rem;">
+          <div class="feature-card">
+            <h2>Borrow money</h2>
+            <p class="tiny-note">
+              Fill in your details and we’ll receive your request.
+            </p>
+
+            <form
+              name="borrow"
+              method="POST"
+              data-netlify="true"
+              class="borrow-form"
+            >
+              <!-- Netlify needs this hidden input -->
+              <input type="hidden" name="form-name" value="borrow" />
+
+              <div class="borrow-row">
+                <input
+                  class="borrow-input"
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                />
+                <input
+                  class="borrow-input"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+
+              <div class="borrow-row">
+                <input
+                  class="borrow-input"
+                  type="text"
+                  name="phone"
+                  placeholder="Phone number"
+                  required
+                />
+                <input
+                  class="borrow-input"
+                  type="number"
+                  name="amount"
+                  placeholder="Amount you want to borrow (e.g. 2000)"
+                  required
+                />
+              </div>
+
+              <textarea
+                class="borrow-textarea"
+                name="reason"
+                placeholder="Tell a bit about why you need this loan."
+                rows="4"
+                required
+              ></textarea>
+
+              <button type="submit" class="btn btn-primary borrow-submit">
+                Send request
+              </button>
+            </form>
           </div>
         </section>
 
