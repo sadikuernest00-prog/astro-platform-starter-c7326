@@ -1,102 +1,42 @@
----
-import Layout from '../layouts/Layout.astro';
-import Markdown from '../components/Markdown.astro';
 
 const explainer = `
-**AmicBridge is a private introduction desk for capital and opportunities.**
+**AmicBridge connects people who want to borrow money with people who want to lend money — privately and securely.**
 
-We quietly connect individuals who have capital with individuals and projects that need it.
-No sign-ups, no public listings, no accounts to create — everything happens privately.
+If you need funding or you have capital to lend, we introduce you to a suitable person from our private network.
+No public listings, no accounts, and AmicBridge never touches your money — everything stays between you and the other party.
 
-We never hold funds, arrange payments, or guarantee outcomes.  
-Our role is limited to **information and introductions** between interested parties.
+### For Borrowers
+- Borrow money directly from private lenders  
+- Use it for personal needs, business, property, or projects  
+- Simple, fast, confidential communication  
+- You and the lender agree on terms privately  
+
+Tell us how much you want to borrow and your repayment plan.
+
+### For Lenders
+- Lend your own capital directly to real people  
+- Choose amount, purpose, and risk level  
+- Keep full control of your decisions  
+- No commissions or percentages taken from your deal  
+
+Tell us how much you want to lend and what type of borrower you prefer.
 
 ### How AmicBridge Works
-1. You tell us discreetly what you need or what you offer.  
-2. We search our private network for a suitable counterpart.  
-3. If you want a direct connection, you unlock their details for a small fee.
+1. **You message us privately** and tell us what you need — borrow or lend.  
+2. **We search our private network** for someone suitable.  
+3. When we find a match, **you pay a small introduction fee**.  
+4. After payment, we unlock **the direct contact details** of the other person.  
 
-All financial decisions, agreements, and transfers happen *outside* AmicBridge,  
-strictly between you and the other party.
+All conversations, negotiations, agreements, and money transfers happen directly between you and the other party — not through AmicBridge.
 
-### What You Can Use AmicBridge For
-– Private lending  
-– Private borrowing  
-– Property-related capital needs  
-– Small business funding  
-– Private co-investment opportunities  
-– Connecting with people who prefer discretion over public marketplaces
+### How You Pay AmicBridge
+AmicBridge charges a **fixed introduction fee** when you want to unlock a match.
+No commissions, no success fees, and no hidden charges.  
+You only pay when you decide an introduction is valuable.
 
-AmicBridge is built on **privacy, discretion, and direct human connection**.
-We stay outside the deal. You stay in full control.
+### Important Notice
+AmicBridge is **not a bank, broker, or advisor**.  
+We do **not** arrange payments, hold money, or guarantee any outcomes.  
+Borrowing and lending always involve risk, including the possibility of losing money.  
+You are responsible for your own checks, agreements, and decisions with anyone you meet through AmicBridge.
 `;
----
-
-<Layout title="AmicBridge – Private Capital Connections">
-
-  <!-- HERO -->
-  <section class="mb-10">
-    <h1 class="text-4xl sm:text-5xl font-bold mb-4">
-      Discreet connections between capital and opportunity.
-    </h1>
-    <p class="text-slate-300 text-lg max-w-2xl">
-      A private desk for individuals seeking capital or offering it.  
-      No platforms holding your money — just confidential introductions with real people.
-    </p>
-  </section>
-
-  <!-- MAIN TEXT -->
-  <section class="mb-10">
-    <Markdown content={explainer} class="text-lg leading-relaxed" />
-  </section>
-
-  <!-- ACTION BUTTONS -->
-  <section class="flex flex-wrap gap-6 mb-14">
-
-    <!-- Need Capital -->
-    <a 
-      href="https://wa.me/4792928373?text=Hi%2C+I+need+capital+through+AmicBridge"
-      target="_blank"
-      class="bg-rose-400 hover:bg-rose-500 text-slate-900 font-semibold px-12 py-4 rounded-lg shadow-lg"
-    >
-      I Need Capital
-    </a>
-
-    <!-- Have Capital -->
-    <a 
-      href="https://wa.me/4792928373?text=Hi%2C+I+have+capital+and+want+opportunities+via+AmicBridge"
-      target="_blank"
-      class="bg-rose-400 hover:bg-rose-500 text-slate-900 font-semibold px-12 py-4 rounded-lg shadow-lg"
-    >
-      I Have Capital to Deploy
-    </a>
-
-  </section>
-
-  <!-- PRICING MODEL -->
-  <section class="mt-8 max-w-2xl space-y-4">
-    <h2 class="text-2xl font-semibold">How You Pay AmicBridge</h2>
-
-    <p class="text-slate-300">
-      AmicBridge does not take a percentage of your deal and never touches your money.
-      You only pay for **private introductions**.
-    </p>
-
-    <ul class="list-disc list-inside text-slate-300 space-y-1">
-      <li>You message us privately via WhatsApp.</li>
-      <li>We confirm whether we have a suitable match.</li>
-      <li>You pay a small unlock fee to receive the direct contact details.</li>
-    </ul>
-
-    <p class="text-slate-300">
-      Unlock fee: <strong>499 NOK per contact</strong>.
-    </p>
-
-    <p class="text-slate-400 text-sm">
-      Payments are handled directly with AmicBridge (e.g., Vipps to <strong>92928373</strong>).  
-      AmicBridge never manages client funds and does not offer financial advice.  
-      All agreements remain strictly between the private parties involved.
-    </p>
-  </section>
-
-</Layout>
