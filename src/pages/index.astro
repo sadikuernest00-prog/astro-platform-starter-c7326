@@ -1,15 +1,18 @@
-
 ---
 const featuresBorrower = [
   "Reach real people willing to lend, not just banks.",
+  "Borrow in normal money or crypto, depending on what you and the lender agree.",
   "Explain your situation in your own words.",
   "Negotiate repayment terms directly with lenders.",
+  "Whenever possible, we match you with manually verified lenders.",
 ];
 
 const featuresLender = [
   "See real people and projects, not just numbers.",
+  "Lend using bank transfer, crypto, or both – you decide.",
   "Set your own interest rate and conditions.",
   "Chat with borrowers before you commit.",
+  "Apply for a Verified lender badge after a quick manual review.",
 ];
 ---
 
@@ -19,7 +22,7 @@ const featuresLender = [
     <title>Amicbridge – Borrow and Lend Directly</title>
     <meta
       name="description"
-      content="Amicbridge connects people who want to borrow money with people who want to lend – directly, person to person."
+      content="Amicbridge connects people who want to borrow money with people who want to lend – directly, person to person, with normal money or crypto."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
@@ -327,8 +330,8 @@ const featuresLender = [
             <p class="hero-text">
               Amicbridge connects people who want to
               <strong>borrow</strong> with people who want to
-              <strong>lend</strong>. You agree the terms – we just help you
-              find each other.
+              <strong>lend</strong> – using normal money or crypto. You agree
+              the terms and payment method – we just help you find each other.
             </p>
 
             <div class="cta-row">
@@ -437,7 +440,9 @@ const featuresLender = [
           <div class="feature-card">
             <h2>Borrow money</h2>
             <p class="tiny-note">
-              Fill in your details and we’ll receive your request.
+              Fill in your details and we’ll receive your request. You can use
+              normal money (bank transfer) or crypto, depending on who you match
+              with.
             </p>
 
             <form
@@ -482,6 +487,27 @@ const featuresLender = [
                 />
               </div>
 
+              <div class="borrow-row">
+                <select
+                  class="borrow-input"
+                  name="payment_method"
+                  required
+                >
+                  <option value="">
+                    Preferred payment method (bank or crypto)
+                  </option>
+                  <option value="bank">Bank transfer</option>
+                  <option value="crypto">Crypto</option>
+                  <option value="either">Either / open to both</option>
+                </select>
+                <input
+                  class="borrow-input"
+                  type="text"
+                  name="crypto_details"
+                  placeholder="If crypto: coin + wallet type (e.g. USDT on Ethereum)"
+                />
+              </div>
+
               <textarea
                 class="borrow-textarea"
                 name="reason"
@@ -502,8 +528,9 @@ const featuresLender = [
           <div class="feature-card">
             <h2>Lend money</h2>
             <p class="tiny-note">
-              Tell us how much you want to lend and on what terms, and we’ll
-              contact you.
+              Tell us how much you want to lend, how you want to be paid
+              (bank/crypto), and on what terms. Verified lenders may receive a
+              special badge in our communication.
             </p>
 
             <form
@@ -549,6 +576,27 @@ const featuresLender = [
               </div>
 
               <div class="borrow-row">
+                <select
+                  class="borrow-input"
+                  name="payment_method"
+                  required
+                >
+                  <option value="">
+                    Preferred payment method (bank or crypto)
+                  </option>
+                  <option value="bank">Bank transfer</option>
+                  <option value="crypto">Crypto</option>
+                  <option value="either">Either / open to both</option>
+                </select>
+                <input
+                  class="borrow-input"
+                  type="text"
+                  name="crypto_details"
+                  placeholder="If crypto: coin + wallet type (e.g. BTC, ETH, USDT)"
+                />
+              </div>
+
+              <div class="borrow-row">
                 <input
                   class="borrow-input"
                   type="number"
@@ -578,6 +626,32 @@ const featuresLender = [
           </div>
         </section>
 
+        <!-- Verification info -->
+        <section id="verification" class="features" style="margin-top: 2rem;">
+          <div class="feature-card">
+            <h2>How lender verification works</h2>
+            <p class="tiny-note">
+              To give borrowers extra confidence, we may manually verify lenders
+              before connecting them.
+            </p>
+            <ul>
+              <li>We review the information you send in the lend form.</li>
+              <li>
+                We may contact you for simple checks, like ID or company
+                details.
+              </li>
+              <li>
+                Verified lenders can be marked with a “Verified lender” note in
+                our communication.
+              </li>
+              <li>
+                Verification helps build trust but does not guarantee repayments
+                or remove your own responsibility to check each loan.
+              </li>
+            </ul>
+          </div>
+        </section>
+
         <!-- Contact -->
         <section id="contact" class="features" style="margin-top: 2rem;">
           <div class="feature-card">
@@ -591,9 +665,11 @@ const featuresLender = [
         <footer id="safety">
           <p>
             <strong>Important:</strong> Amicbridge is a connection platform.
-            We do not provide loans, hold money, or guarantee repayments.
-            Always do your own checks and consult a professional if needed
-            before lending or borrowing.
+            We do not provide loans, hold money, or guarantee repayments. You
+            are responsible for any payments you send or receive, whether by
+            bank transfer or crypto. Always do your own checks and consult a
+            professional if needed before lending or borrowing, even when
+            dealing with verified lenders.
           </p>
         </footer>
       </main>
