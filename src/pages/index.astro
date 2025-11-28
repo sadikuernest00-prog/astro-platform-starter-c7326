@@ -516,6 +516,14 @@ const featuresLender = [
                 required
               ></textarea>
 
+              <!-- Identity verification checkbox -->
+              <label
+                style="font-size:0.85rem; color:var(--muted); display:flex; gap:0.4rem; align-items:center;"
+              >
+                <input type="checkbox" name="id_verification" />
+                I agree to verify my identity to the other party if needed.
+              </label>
+
               <button type="submit" class="btn btn-primary borrow-submit">
                 Send request
               </button>
@@ -619,6 +627,14 @@ const featuresLender = [
                 rows="4"
               ></textarea>
 
+              <!-- Identity verification checkbox -->
+              <label
+                style="font-size:0.85rem; color:var(--muted); display:flex; gap:0.4rem; align-items:center;"
+              >
+                <input type="checkbox" name="id_verification" />
+                I agree to verify my identity to the other party if needed.
+              </label>
+
               <button type="submit" class="btn btn-primary borrow-submit">
                 Send lending offer
               </button>
@@ -696,7 +712,7 @@ const featuresLender = [
           return;
         }
 
-        const total = amount * (1 + (rate / 100) * (months / 12));
+        const total = amount * (rate / 100 * (months / 12) + 1);
         const monthly = total / months;
 
         offerSpan.textContent = `€${amount.toFixed(0)} · ${rate.toFixed(
