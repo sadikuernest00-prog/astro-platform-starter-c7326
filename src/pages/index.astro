@@ -1,3 +1,4 @@
+
 ---
 const featuresBorrower = [
   "Reach real people willing to lend, not just banks.",
@@ -144,10 +145,8 @@ const featuresLender = [
 
     <script>
       function showForm(type) {
-        document.getElementById("borrow-form").style.display =
-          type === "borrow" ? "block" : "none";
-        document.getElementById("lend-form").style.display =
-          type === "lend" ? "block" : "none";
+        document.getElementById("borrow-form").style.display = type === "borrow" ? "block" : "none";
+        document.getElementById("lend-form").style.display = type === "lend" ? "block" : "none";
         window.location.hash = type === "borrow" ? "#borrow-form" : "#lend-form";
       }
     </script>
@@ -155,6 +154,7 @@ const featuresLender = [
 
   <body>
     <div class="shell">
+
       <header>
         <h2>Amicbridge</h2>
         <nav>
@@ -176,12 +176,8 @@ const featuresLender = [
         </p>
 
         <div class="hero-btns">
-          <button class="primary" onclick="showForm('borrow')">
-            I want to borrow
-          </button>
-          <button onclick="showForm('lend')">
-            I want to lend
-          </button>
+          <button class="primary" onclick="showForm('borrow')">I want to borrow</button>
+          <button onclick="showForm('lend')">I want to lend</button>
         </div>
       </section>
 
@@ -204,12 +200,7 @@ const featuresLender = [
             <option value="stablecoin">Stablecoin (e.g. USDT, USDC)</option>
           </select>
 
-          <input
-            type="number"
-            name="amount"
-            placeholder="Amount you want to borrow"
-            required
-          />
+          <input type="number" name="amount" placeholder="Amount you want to borrow" required />
 
           <textarea
             name="message"
@@ -238,12 +229,7 @@ const featuresLender = [
             <option value="stablecoin">Stablecoin (e.g. USDT, USDC)</option>
           </select>
 
-          <input
-            type="number"
-            name="amount"
-            placeholder="Amount you want to lend"
-            required
-          />
+          <input type="number" name="amount" placeholder="Amount you want to lend" required />
 
           <textarea
             name="message"
@@ -260,12 +246,12 @@ const featuresLender = [
 
         <h3>For borrowers</h3>
         <ul>
-          {featuresBorrower.map((item) => <li>{item}</li>)}
+          {featuresBorrower.map(item => <li>{item}</li>)}
         </ul>
 
         <h3>For lenders</h3>
         <ul>
-          {featuresLender.map((item) => <li>{item}</li>)}
+          {featuresLender.map(item => <li>{item}</li>)}
         </ul>
       </section>
 
@@ -286,6 +272,7 @@ const featuresLender = [
           Always verify who you are dealing with before sending any funds.
         </p>
       </footer>
+
     </div>
   </body>
 </html>
