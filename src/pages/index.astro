@@ -1,9 +1,8 @@
-
 ---
 const featuresBorrower = [
   "Reach real people willing to lend, not just banks.",
-  "Borrow in normal money, crypto, or stablecoins, depending on what you and the lender agree.",
-  "Use your own wallets or bank to move funds directly.",
+  "Borrow in normal money or crypto, depending on what you and the lender agree.",
+  "Use your own wallets to move crypto directly.",
   "Explain your situation in your own words.",
   "Negotiate repayment terms directly with lenders.",
   "Whenever possible, we match you with manually verified lenders.",
@@ -11,8 +10,8 @@ const featuresBorrower = [
 
 const featuresLender = [
   "See real people and projects, not just numbers.",
-  "Lend using bank transfer, crypto, or stablecoins – you decide.",
-  "Use your own wallets or exchange accounts to send and receive crypto or stablecoins.",
+  "Lend using bank transfer, crypto, or both – you decide.",
+  "Use your own wallets or exchange accounts to send and receive crypto.",
   "Set your own interest rate and conditions.",
   "Chat with borrowers before you commit.",
   "Apply for a Verified lender badge after a quick manual review.",
@@ -22,7 +21,7 @@ const featuresLender = [
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Amicbridge – Borrow or Lend Money, Crypto & Stablecoins</title>
+    <title>Amicbridge – Borrow or Lend Money & Crypto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       :root {
@@ -70,15 +69,6 @@ const featuresLender = [
       h1 span {
         color: var(--accent);
       }
-      .hero p {
-        color: var(--muted);
-        max-width: 36rem;
-      }
-      .hero-btns {
-        margin-top: 1rem;
-        display: flex;
-        gap: 0.8rem;
-      }
       .hero-btns button {
         padding: 0.7rem 1.4rem;
         border-radius: 999px;
@@ -94,22 +84,19 @@ const featuresLender = [
         border: none;
       }
       .form-card {
-        background: rgba(15, 23, 42, 0.9);
+        background: rgba(15, 23, 42, 0.8);
         padding: 1.5rem;
         margin-top: 2rem;
         border-radius: 1rem;
         border: 1px solid rgba(255,255,255,0.08);
       }
-      .form-card h2 {
-        margin-top: 0;
-      }
       input, textarea, select {
         width: 100%;
-        margin-top: .4rem;
+        margin-top: .5rem;
         margin-bottom: 1rem;
         padding: .7rem;
         border-radius: .6rem;
-        background: #020617;
+        background: #0b1324;
         border: 1px solid #1e293b;
         color: white;
         font-size: .95rem;
@@ -126,20 +113,11 @@ const featuresLender = [
         font-weight: 600;
         border: none;
       }
-      ul {
-        padding-left: 1.2rem;
-      }
-      ul li {
-        margin-bottom: .3rem;
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
       footer {
         margin-top: 3rem;
         padding-top: 1.5rem;
         border-top: 1px solid rgba(255,255,255,0.1);
         color: var(--muted);
-        font-size: 0.85rem;
       }
     </style>
 
@@ -170,10 +148,7 @@ const featuresLender = [
           <span>Lend to people.</span><br />
           One simple bridge.
         </h1>
-        <p>
-          Amicbridge connects borrowers and lenders using normal money, crypto, or stablecoins.
-          You set the terms — we help you match.
-        </p>
+        <p>Amicbridge connects borrowers and lenders using normal money or crypto. You set the terms — we help you match.</p>
 
         <div class="hero-btns">
           <button class="primary" onclick="showForm('borrow')">I want to borrow</button>
@@ -183,60 +158,43 @@ const featuresLender = [
 
       <!-- Borrow Form -->
       <section id="borrow-form" class="form-card" style="display:none;">
-        <h2>Borrow money, crypto, or stablecoins</h2>
-        <p style="color:var(--muted); font-size:0.9rem;">
-          Fill in your details and we’ll receive your request. Payments always happen directly
-          between you and the lender (bank, crypto, or stablecoins).
-        </p>
+        <h2>Borrow money or crypto</h2>
         <form name="borrow" method="POST" netlify>
           <input type="text" name="name" placeholder="Your name" required />
           <input type="email" name="email" placeholder="Email" required />
           <input type="text" name="phone" placeholder="Phone number" required />
 
-          <select name="currency" required>
-            <option value="">What do you want to borrow in?</option>
-            <option value="normal">Normal money (bank transfer)</option>
-            <option value="crypto">Crypto (e.g. BTC, ETH)</option>
-            <option value="stablecoin">Stablecoin (e.g. USDT, USDC)</option>
+          <select name="currency">
+            <option value="normal">Normal money (bank)</option>
+            <option value="crypto">Crypto</option>
           </select>
 
           <input type="number" name="amount" placeholder="Amount you want to borrow" required />
 
-          <textarea
-            name="message"
-            placeholder="Tell us a bit about why you need this loan and any terms you prefer."
-          ></textarea>
+          <textarea name="message" placeholder="Tell us why you need this loan"></textarea>
 
-          <button class="submit-btn" type="submit">Send request</button>
+          <button class="submit-btn">Send request</button>
         </form>
       </section>
 
       <!-- Lend Form -->
       <section id="lend-form" class="form-card" style="display:none;">
-        <h2>Lend money, crypto, or stablecoins</h2>
-        <p style="color:var(--muted); font-size:0.9rem;">
-          Tell us how much you want to lend, in what form (bank, crypto, stablecoins), and on which terms.
-        </p>
+        <h2>Lend money or crypto</h2>
         <form name="lend" method="POST" netlify>
           <input type="text" name="name" placeholder="Your name" required />
           <input type="email" name="email" placeholder="Email" required />
           <input type="text" name="phone" placeholder="Phone number" required />
 
-          <select name="currency" required>
-            <option value="">What do you want to lend in?</option>
-            <option value="normal">Normal money (bank transfer)</option>
-            <option value="crypto">Crypto (e.g. BTC, ETH)</option>
-            <option value="stablecoin">Stablecoin (e.g. USDT, USDC)</option>
+          <select name="currency">
+            <option value="normal">Normal money (bank)</option>
+            <option value="crypto">Crypto</option>
           </select>
 
           <input type="number" name="amount" placeholder="Amount you want to lend" required />
 
-          <textarea
-            name="message"
-            placeholder="Describe your lending terms (interest, duration, conditions, etc.)."
-          ></textarea>
+          <textarea name="message" placeholder="Tell borrowers what kind of loan you offer"></textarea>
 
-          <button class="submit-btn" type="submit">Publish lending offer</button>
+          <button class="submit-btn">Publish lending offer</button>
         </form>
       </section>
 
@@ -265,12 +223,7 @@ const featuresLender = [
       </section>
 
       <footer>
-        <p>
-          <strong>Important:</strong> Amicbridge is a connection platform.
-          We do not provide loans, hold money, or guarantee repayments.
-          All transfers (bank, crypto, or stablecoins) happen directly between borrower and lender.
-          Always verify who you are dealing with before sending any funds.
-        </p>
+        <p><strong>Important:</strong> Amicbridge is a connection platform. We do not provide loans, hold money, or guarantee repayments. Always verify who you are dealing with.</p>
       </footer>
 
     </div>
