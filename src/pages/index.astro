@@ -1,5 +1,11 @@
 ---
 const year = new Date().getFullYear();
+
+// ⚠️ REPLACE THESE WITH YOUR REAL FORMSPREE ENDPOINTS
+const BORROW_FORMSPREE_URL = "https://formspree.io/f/yourBorrowId";
+const LEND_FORMSPREE_URL = "https://formspree.io/f/yourLendId";
+const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
+// You can also just use ONE url for all three if you like.
 ---
 
 <!DOCTYPE html>
@@ -173,12 +179,8 @@ const year = new Date().getFullYear();
           you and a lender.
         </p>
 
-        <!-- BORROW FORM: REPLACE URL BELOW WITH YOUR REAL FORMSPREE URL -->
-        <form
-          class="form"
-          action="https://formspree.io/f/YOUR_FORMSPREE_BORROW_URL"
-          method="POST"
-        >
+        <!-- BORROW FORM -->
+        <form class="form" action={BORROW_FORMSPREE_URL} method="POST">
           <input
             type="hidden"
             name="_subject"
@@ -253,12 +255,8 @@ const year = new Date().getFullYear();
           of borrowers you prefer. Submitting your profile is free.
         </p>
 
-        <!-- LEND FORM: REPLACE URL BELOW WITH YOUR REAL FORMSPREE URL -->
-        <form
-          class="form"
-          action="https://formspree.io/f/YOUR_FORMSPREE_LEND_URL"
-          method="POST"
-        >
+        <!-- LEND FORM -->
+        <form class="form" action={LEND_FORMSPREE_URL} method="POST">
           <input
             type="hidden"
             name="_subject"
@@ -314,7 +312,7 @@ const year = new Date().getFullYear();
       </div>
     </section>
 
-    <!-- STRATEGY -->
+    <!-- STRATEGY (no email required if you don't want it yet) -->
     <section id="strategy" class="section section-alt">
       <div class="container">
         <h2 class="section-title">Investment strategy requests</h2>
@@ -324,12 +322,7 @@ const year = new Date().getFullYear();
           performance.
         </p>
 
-        <!-- STRATEGY FORM: REPLACE URL BELOW WITH YOUR REAL FORMSPREE URL -->
-        <form
-          class="form"
-          action="https://formspree.io/f/YOUR_FORMSPREE_STRATEGY_URL"
-          method="POST"
-        >
+        <form class="form" action={BORROW_FORMSPREE_URL} method="POST">
           <input
             type="hidden"
             name="_subject"
@@ -380,12 +373,8 @@ const year = new Date().getFullYear();
           reach out using this form or via direct email.
         </p>
 
-        <!-- CONTACT FORM: REPLACE URL BELOW WITH YOUR REAL FORMSPREE URL -->
-        <form
-          class="form"
-          action="https://formspree.io/f/YOUR_FORMSPREE_CONTACT_URL"
-          method="POST"
-        >
+        <!-- CONTACT FORM -->
+        <form class="form" action={CONTACT_FORMSPREE_URL} method="POST">
           <input
             type="hidden"
             name="_subject"
@@ -479,7 +468,6 @@ const year = new Date().getFullYear();
       margin-bottom: 2rem;
       line-height: 1.55;
     }
-
     .header {
       background: #fff;
       border-bottom: 1px solid #e5e7eb;
@@ -526,7 +514,6 @@ const year = new Date().getFullYear();
     .nav-link:hover {
       color: #000;
     }
-
     .hero {
       padding: 4rem 0 3rem;
       background: #fafbfe;
@@ -559,7 +546,6 @@ const year = new Date().getFullYear();
       max-width: 30rem;
       line-height: 1.4;
     }
-
     .btn {
       border-radius: 0.45rem;
       padding: 0.6rem 1rem;
@@ -592,7 +578,6 @@ const year = new Date().getFullYear();
       width: 100%;
       margin-top: 0.6rem;
     }
-
     .how-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -616,7 +601,6 @@ const year = new Date().getFullYear();
       justify-content: center;
       margin-top: 0.15rem;
     }
-
     .principles-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -629,12 +613,10 @@ const year = new Date().getFullYear();
       border-radius: 0.8rem;
       padding: 1.2rem 1rem;
     }
-
     .bridge-list li {
       margin-bottom: 0.45rem;
       color: #3b3b3b;
     }
-
     .form {
       display: flex;
       flex-direction: column;
@@ -679,7 +661,6 @@ const year = new Date().getFullYear();
       color: #777;
       margin-top: 0.5rem;
     }
-
     .contact-card {
       background: #ffffff;
       border: 1px solid #e5e7eb;
@@ -692,7 +673,6 @@ const year = new Date().getFullYear();
       color: #4755f1;
       text-decoration: none;
     }
-
     .footer {
       margin-top: auto;
       background: #ffffff;
@@ -711,7 +691,6 @@ const year = new Date().getFullYear();
       max-width: 40rem;
       line-height: 1.45;
     }
-
     @media (max-width: 900px) {
       .principles-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
