@@ -1,11 +1,5 @@
 ---
 const year = new Date().getFullYear();
-
-// ⚠️ REPLACE THESE WITH YOUR REAL FORMSPREE ENDPOINTS
-const BORROW_FORMSPREE_URL = "https://formspree.io/f/yourBorrowId";
-const LEND_FORMSPREE_URL = "https://formspree.io/f/yourLendId";
-const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
-// You can also just use ONE url for all three if you like.
 ---
 
 <!DOCTYPE html>
@@ -154,7 +148,7 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
           <div class="principle-card">
             <h3>Risk visibility</h3>
             <p>
-              We highlight that peer-to-peer finance always has risk. No fee or form
+              We highlight that peer-to-peer finance always has risk. No form or fee
               removes that risk.
             </p>
           </div>
@@ -180,7 +174,11 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
         </p>
 
         <!-- BORROW FORM -->
-        <form class="form" action={BORROW_FORMSPREE_URL} method="POST">
+        <form
+          class="form"
+          action="https://formspree.io/f/xwpgqbgo"
+          method="POST"
+        >
           <input
             type="hidden"
             name="_subject"
@@ -256,7 +254,11 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
         </p>
 
         <!-- LEND FORM -->
-        <form class="form" action={LEND_FORMSPREE_URL} method="POST">
+        <form
+          class="form"
+          action="https://formspree.io/f/xwpgqbgo"
+          method="POST"
+        >
           <input
             type="hidden"
             name="_subject"
@@ -312,7 +314,7 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
       </div>
     </section>
 
-    <!-- STRATEGY (no email required if you don't want it yet) -->
+    <!-- STRATEGY -->
     <section id="strategy" class="section section-alt">
       <div class="container">
         <h2 class="section-title">Investment strategy requests</h2>
@@ -322,7 +324,12 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
           performance.
         </p>
 
-        <form class="form" action={BORROW_FORMSPREE_URL} method="POST">
+        <!-- STRATEGY FORM -->
+        <form
+          class="form"
+          action="https://formspree.io/f/xwpgqbgo"
+          method="POST"
+        >
           <input
             type="hidden"
             name="_subject"
@@ -368,53 +375,57 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
     <section id="contact" class="section">
       <div class="container">
         <h2 class="section-title">Contact</h2>
-        <p class="section-lead">
-          For questions about the platform or to discuss how AmicBridge works, you can
-          reach out using this form or via direct email.
+      <p class="section-lead">
+        For questions about the platform or to discuss how AmicBridge works, you can
+        reach out using this form or via direct email.
+      </p>
+
+      <!-- CONTACT FORM -->
+      <form
+        class="form"
+        action="https://formspree.io/f/xwpgqbgo"
+        method="POST"
+      >
+        <input
+          type="hidden"
+          name="_subject"
+          value="New CONTACT message from AmicBridge"
+        />
+
+        <label>
+          Your name
+          <input type="text" name="name" required />
+        </label>
+
+        <label>
+          Your email
+          <input type="email" name="email" required />
+        </label>
+
+        <label>
+          Message
+          <textarea name="message" rows="4"></textarea>
+        </label>
+
+        <button class="btn btn-primary btn-full">Send message</button>
+
+        <p class="card-note">
+          For security, do not send passwords, bank details or private keys.
         </p>
+      </form>
 
-        <!-- CONTACT FORM -->
-        <form class="form" action={CONTACT_FORMSPREE_URL} method="POST">
-          <input
-            type="hidden"
-            name="_subject"
-            value="New CONTACT message from AmicBridge"
-          />
-
-          <label>
-            Your name
-            <input type="text" name="name" required />
-          </label>
-
-          <label>
-            Your email
-            <input type="email" name="email" required />
-          </label>
-
-          <label>
-            Message
-            <textarea name="message" rows="4"></textarea>
-          </label>
-
-          <button class="btn btn-primary btn-full">Send message</button>
-
-          <p class="card-note">
-            For security, do not send passwords, bank details or private keys.
-          </p>
-        </form>
-
-        <div class="contact-card" style="margin-top:1.5rem;">
-          <p><strong>CEO:</strong> Robert</p>
-          <p>
-            <strong>Email:</strong>
-            <a href="mailto:Robertamicolsen@gmail.com">Robertamicolsen@gmail.com</a>
-          </p>
-          <p class="card-note">
-            Direct email is available for important questions and partnership discussions.
-          </p>
-        </div>
+      <div class="contact-card" style="margin-top:1.5rem;">
+        <p><strong>CEO:</strong> Robert</p>
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:Robertamicolsen@gmail.com">Robertamicolsen@gmail.com</a>
+        </p>
+        <p class="card-note">
+          Direct email is available for important questions and partnership discussions.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- FOOTER -->
     <footer class="footer">
@@ -468,6 +479,7 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
       margin-bottom: 2rem;
       line-height: 1.55;
     }
+
     .header {
       background: #fff;
       border-bottom: 1px solid #e5e7eb;
@@ -514,6 +526,7 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
     .nav-link:hover {
       color: #000;
     }
+
     .hero {
       padding: 4rem 0 3rem;
       background: #fafbfe;
@@ -546,6 +559,7 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
       max-width: 30rem;
       line-height: 1.4;
     }
+
     .btn {
       border-radius: 0.45rem;
       padding: 0.6rem 1rem;
@@ -578,6 +592,7 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
       width: 100%;
       margin-top: 0.6rem;
     }
+
     .how-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -601,6 +616,7 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
       justify-content: center;
       margin-top: 0.15rem;
     }
+
     .principles-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -613,10 +629,12 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
       border-radius: 0.8rem;
       padding: 1.2rem 1rem;
     }
+
     .bridge-list li {
       margin-bottom: 0.45rem;
       color: #3b3b3b;
     }
+
     .form {
       display: flex;
       flex-direction: column;
@@ -661,6 +679,7 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
       color: #777;
       margin-top: 0.5rem;
     }
+
     .contact-card {
       background: #ffffff;
       border: 1px solid #e5e7eb;
@@ -673,6 +692,7 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
       color: #4755f1;
       text-decoration: none;
     }
+
     .footer {
       margin-top: auto;
       background: #ffffff;
@@ -691,6 +711,7 @@ const CONTACT_FORMSPREE_URL = "https://formspree.io/f/yourContactId";
       max-width: 40rem;
       line-height: 1.45;
     }
+
     @media (max-width: 900px) {
       .principles-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
