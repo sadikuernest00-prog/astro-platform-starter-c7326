@@ -47,7 +47,9 @@ const year = new Date().getFullYear();
           is collected in a clear, structured way. Our role is to be the trusted
           bridge: we review who is entering, how they present themselves, and how
           they describe what they want to borrow or lend.
-        </p>
+
+         Trust first. Money second.
+           </p>
 
         <div class="hero-buttons">
           <a href="#borrow" class="btn btn-primary">Request a loan</a>
@@ -243,6 +245,29 @@ const year = new Date().getFullYear();
           </label>
 
           <label>
+            Your situation
+            <select name="situation" required>
+              <option value="">Choose…</option>
+              <option>Work</option>
+              <option>Business</option>
+              <option>Self-employed</option>
+              <option>Company</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <div class="conditional-group" id="borrow-business-fields" style="display:none;">
+            <label>
+              Business / company name
+              <input type="text" name="business_name" />
+            </label>
+            <label>
+              Your role / position
+              <input type="text" name="business_role" />
+            </label>
+          </div>
+
+          <label>
             Purpose and how you plan to repay
             <textarea name="purpose" rows="3"></textarea>
           </label>
@@ -319,6 +344,22 @@ const year = new Date().getFullYear();
           </label>
 
           <label>
+            You are lending as
+            <select name="lending_type" required>
+              <option value="">Choose…</option>
+              <option>Personal</option>
+              <option>Business</option>
+            </select>
+          </label>
+
+          <div class="conditional-group" id="lend-business-fields" style="display:none;">
+            <label>
+              Business / company name
+              <input type="text" name="lending_business_name" />
+            </label>
+          </div>
+
+          <label>
             What kind of borrower are you looking for?
             <textarea name="preferred_borrower" rows="3"></textarea>
           </label>
@@ -380,7 +421,7 @@ const year = new Date().getFullYear();
           </label>
 
           <label>
-            What can you invest in? (cash, crypto, stocks, etc.)
+            What can you invest in? (Silver, crypto, stocks, etc.)
             <textarea name="assets" rows="2"></textarea>
           </label>
 
@@ -468,292 +509,344 @@ const year = new Date().getFullYear();
         </p>
       </div>
     </footer>
-  </body>
 
-  <style>
-    :global(body) {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      background: #f8f9fc;
-      color: #1e1e1e;
-    }
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-    .section {
-      padding: 3rem 0;
-    }
-    .section-alt {
-      background: #ffffff;
-      border-block: 1px solid #e5e7eb;
-    }
-    .section-title {
-      font-size: 1.9rem;
-      margin-bottom: 0.4rem;
-      font-weight: 600;
-    }
-    .section-lead {
-      max-width: 50rem;
-      color: #555;
-      margin-bottom: 2rem;
-      line-height: 1.55;
-    }
+    <!-- SIMPLE DYNAMIC LOGIC -->
+    <script>
+      // Borrow form: show extra fields when situation is business-like
+      (function () {
+        const situationSelect = document.querySelector('select[name="situation"]');
+        const borrowBusinessFields = document.getElementById('borrow-business-fields');
 
-    .header {
-      background: #fff;
-      border-bottom: 1px solid #e5e7eb;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-weight: 600;
-      color: #111;
-    }
-    .logo-mark {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(to bottom right, #3b82f6, #6366f1);
-      color: white;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-    .logo-text {
-      font-size: 1.05rem;
-    }
-    .nav {
-      display: flex;
-      gap: 1rem;
-      font-size: 0.9rem;
-      flex-wrap: wrap;
-    }
-    .nav-link {
-      text-decoration: none;
-      color: #444;
-      padding-bottom: 2px;
-    }
-    .nav-link:hover {
-      color: #000;
-    }
+        function updateBorrowFields() {
+          if (!situationSelect || !borrowBusinessFields) return;
+          const val = situationSelect.value.toLowerCase();
+          if (['business', 'self-employed', 'company'].includes(val)) {
+            borrowBusinessFields.style.display = 'flex';
+          } else {
+            borrowBusinessFields.style.display = 'none';
+          }
+        }
 
-    .hero {
-      padding: 4rem 0 3rem;
-      background: #fafbfe;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    .hero-inner {
-      max-width: 830px;
-      margin: 0 auto;
-    }
-    .hero-title {
-      font-size: 2.1rem;
-      line-height: 1.25;
-      margin-bottom: 1rem;
-    }
-    .hero-subtitle {
-      font-size: 1.03rem;
-      color: #4b5563;
-      line-height: 1.6;
-      margin-bottom: 1.4rem;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-    .hero-note {
-      font-size: 0.85rem;
-      color: #666;
-      max-width: 32rem;
-      line-height: 1.4;
-    }
+        if (situationSelect) {
+          situationSelect.addEventListener('change', updateBorrowFields);
+          updateBorrowFields();
+        }
+      })();
 
-    .btn {
-      border-radius: 0.45rem;
-      padding: 0.6rem 1rem;
-      border: 1px solid transparent;
-      font-size: 0.9rem;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.18s;
-    }
-    .btn-primary {
-      background: linear-gradient(to right, #6366f1, #3b82f6);
-      color: white;
-    }
-    .btn-primary:hover {
-      background: linear-gradient(to right, #4f46e5, #2563eb);
-    }
-    .btn-secondary {
-      border-color: #d0d3da;
-      background: #f9fafb;
-      color: #222;
-    }
-    .btn-secondary:hover {
-      background: #f1f2f5;
-      border-color: #babec7;
-    }
-    .btn-full {
-      width: 100%;
-      margin-top: 0.6rem;
-    }
+      // Lend form: show extra fields when lending as business
+      (function () {
+        const lendingTypeSelect = document.querySelector('select[name="lending_type"]');
+        const lendBusinessFields = document.getElementById('lend-business-fields');
 
-    .how-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.2rem;
-    }
-    .how-step {
-      display: flex;
-      gap: 0.8rem;
-      align-items: flex-start;
-    }
-    .how-number {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      background: #eef0ff;
-      border: 1px solid #c7ccf7;
-      color: #3f4cd0;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 0.15rem;
-    }
+        function updateLendFields() {
+          if (!lendingTypeSelect || !lendBusinessFields) return;
+          const val = lendingTypeSelect.value.toLowerCase();
+          if (val === 'business') {
+            lendBusinessFields.style.display = 'flex';
+          } else {
+            lendBusinessFields.style.display = 'none';
+          }
+        }
 
-    .principles-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1.2rem;
-      margin-top: 2rem;
-    }
-    .principle-card {
-      background: #ffffff;
-      border: 1px solid #e4e6eb;
-      border-radius: 0.8rem;
-      padding: 1.2rem 1rem;
-    }
+        if (lendingTypeSelect) {
+          lendingTypeSelect.addEventListener('change', updateLendFields);
+          updateLendFields();
+        }
+      })();
+    </script>
 
-    .bridge-list li {
-      margin-bottom: 0.45rem;
-      color: #3b3b3b;
-    }
-
-    .form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      max-width: 600px;
-      background: #ffffff;
-      padding: 1.4rem;
-      border-radius: 0.9rem;
-      border: 1px solid #e5e7eb;
-      margin-top: 2rem;
-    }
-    label {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: #555;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    input,
-    select,
-    textarea {
-      border-radius: 0.4rem;
-      border: 1px solid #d2d5dc;
-      background: #fff;
-      padding: 0.55rem 0.7rem;
-      font: inherit;
-      outline: none;
-    }
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: #6366f1;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.8rem;
-    }
-    .card-note {
-      font-size: 0.75rem;
-      color: #777;
-      margin-top: 0.5rem;
-    }
-
-    .contact-card {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 0.8rem;
-      padding: 1.2rem;
-      font-size: 0.9rem;
-      max-width: 420px;
-    }
-    .contact-card a {
-      color: #4755f1;
-      text-decoration: none;
-    }
-
-    .footer {
-      margin-top: auto;
-      background: #ffffff;
-      border-top: 1px solid #e5e7eb;
-      padding: 1.5rem 0;
-      font-size: 0.82rem;
-      color: #505050;
-    }
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: center;
-    }
-    .footer-main {
-      max-width: 40rem;
-      line-height: 1.45;
-    }
-
-    @media (max-width: 900px) {
-      .principles-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    <style>
+      :global(body) {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        background: #f8f9fc;
+        color: #1e1e1e;
       }
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      .section {
+        padding: 3rem 0;
+      }
+      .section-alt {
+        background: #ffffff;
+        border-block: 1px solid #e5e7eb;
+      }
+      .section-title {
+        font-size: 1.9rem;
+        margin-bottom: 0.4rem;
+        font-weight: 600;
+      }
+      .section-lead {
+        max-width: 50rem;
+        color: #555;
+        margin-bottom: 2rem;
+        line-height: 1.55;
+      }
+
+      .header {
+        background: #fff;
+        border-bottom: 1px solid #e5e7eb;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 0;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-weight: 600;
+        color: #111;
+      }
+      .logo-mark {
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to bottom right, #3b82f6, #6366f1);
+        color: white;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+      .logo-text {
+        font-size: 1.05rem;
+      }
+      .nav {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+      }
+      .nav-link {
+        text-decoration: none;
+        color: #444;
+        padding-bottom: 2px;
+      }
+      .nav-link:hover {
+        color: #000;
+      }
+
+      .hero {
+        padding: 4rem 0 3rem;
+        background: #fafbfe;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .hero-inner {
+        max-width: 830px;
+        margin: 0 auto;
+      }
+      .hero-title {
+        font-size: 2.1rem;
+        line-height: 1.25;
+        margin-bottom: 1rem;
+      }
+      .hero-subtitle {
+        font-size: 1.03rem;
+        color: #4b5563;
+        line-height: 1.6;
+        margin-bottom: 1.4rem;
+      }
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+      .hero-note {
+        font-size: 0.85rem;
+        color: #666;
+        max-width: 32rem;
+        line-height: 1.4;
+      }
+
+      .btn {
+        border-radius: 0.45rem;
+        padding: 0.6rem 1rem;
+        border: 1px solid transparent;
+        font-size: 0.9rem;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.18s;
+      }
+      .btn-primary {
+        background: linear-gradient(to right, #6366f1, #3b82f6);
+        color: white;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(to right, #4f46e5, #2563eb);
+      }
+      .btn-secondary {
+        border-color: #d0d3da;
+        background: #f9fafb;
+        color: #222;
+      }
+      .btn-secondary:hover {
+        background: #f1f2f5;
+        border-color: #babec7;
+      }
+      .btn-full {
+        width: 100%;
+        margin-top: 0.6rem;
+      }
+
       .how-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.2rem;
       }
-    }
-    @media (max-width: 700px) {
-      .form,
+      .how-step {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+      .how-number {
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        background: #eef0ff;
+        border: 1px solid #c7ccf7;
+        color: #3f4cd0;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0.15rem;
+      }
+
+      .principles-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.2rem;
+        margin-top: 2rem;
+      }
+      .principle-card {
+        background: #ffffff;
+        border: 1px solid #e4e6eb;
+        border-radius: 0.8rem;
+        padding: 1.2rem 1rem;
+      }
+
+      .bridge-list li {
+        margin-bottom: 0.45rem;
+        color: #3b3b3b;
+      }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        max-width: 600px;
+        background: #ffffff;
+        padding: 1.4rem;
+        border-radius: 0.9rem;
+        border: 1px solid #e5e7eb;
+        margin-top: 2rem;
+      }
+      label {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #555;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      input,
+      select,
+      textarea {
+        border-radius: 0.4rem;
+        border: 1px solid #d2d5dc;
+        background: #fff;
+        padding: 0.55rem 0.7rem;
+        font: inherit;
+        outline: none;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: #6366f1;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.8rem;
+      }
+      .card-note {
+        font-size: 0.75rem;
+        color: #777;
+        margin-top: 0.5rem;
+      }
+
+      .conditional-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-top: 0.2rem;
+      }
+
       .contact-card {
-        max-width: 100%;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.8rem;
+        padding: 1.2rem;
+        font-size: 0.9rem;
+        max-width: 420px;
       }
-    }
-  </style>
+      .contact-card a {
+        color: #4755f1;
+        text-decoration: none;
+      }
+
+      .footer {
+        margin-top: auto;
+        background: #ffffff;
+        border-top: 1px solid #e5e7eb;
+        padding: 1.5rem 0;
+        font-size: 0.82rem;
+        color: #505050;
+      }
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+      }
+      .footer-main {
+        max-width: 40rem;
+        line-height: 1.45;
+      }
+
+      @media (max-width: 900px) {
+        .principles-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .how-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 700px) {
+        .form,
+        .contact-card {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </body>
 </html>
