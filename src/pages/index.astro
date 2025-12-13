@@ -1,5 +1,3 @@
----
---->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -414,9 +412,83 @@
       color: var(--text-sub);
     }
 
+    /* === BTC payment section styles === */
+    .pay-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2rem;
+    }
+
+    .pay-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 1.4rem 1.4rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.93rem;
+      color: var(--text-sub);
+    }
+
+    .btc-address-box {
+      background: #f9fafb;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      padding: 0.6rem 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      word-wrap: break-word;
+    }
+
+    .btc-address-text {
+      flex: 1;
+      overflow-wrap: anywhere;
+    }
+
+    .btc-copy-btn {
+      border: none;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btc-copy-btn:hover {
+      background: var(--primary-hover);
+    }
+
+    .btc-qr-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.9rem;
+    }
+
+    .btc-qr {
+      width: 190px;
+      height: 190px;
+      border-radius: 12px;
+      border: 1px solid #d1d5db;
+      background: #fff;
+    }
+
+    .pay-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
     @media (max-width: 880px) {
       .contact-grid { grid-template-columns: minmax(0, 1fr); }
       .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .pay-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
     @media (max-width: 760px) {
@@ -450,6 +522,7 @@
         <a href="#strategy">Investment strategy</a>
         <a href="/create-profile">Create profile</a>
         <a href="#contact">Contact</a>
+        <a href="#payment">Payment</a>
       </nav>
       <div class="nav-cta">
         <a href="#contact">Sign in</a>
@@ -738,6 +811,57 @@
         </div>
       </div>
     </section>
+
+    <!-- Bitcoin Payment Section -->
+    <section class="section" id="payment">
+      <div class="shell">
+        <h2 class="section-title">Pay with Bitcoin.</h2>
+        <p class="section-text">
+          For certain services or contributions, you can send payment directly in Bitcoin. Transfers go
+          straight from your wallet to the AmicBridge wallet – no intermediaries.
+        </p>
+
+        <div class="pay-grid">
+          <div class="pay-card">
+            <h3 style="margin-bottom:0.4rem;">Payment details</h3>
+            <p style="font-size:0.95rem; margin-bottom:0.3rem;">
+              Amount: <strong>550 NOK</strong> (BTC equivalent at the time of payment)
+            </p>
+            <p style="font-size:0.9rem; margin-bottom:0.35rem;">
+              Send BTC to this address:
+            </p>
+            <div class="btc-address-box">
+              <span class="btc-address-text" id="btc-address">
+                3BjNYuWcg1iUKnypB8gee4ji5MQnUu3sRn
+              </span>
+              <button type="button" class="btc-copy-btn" id="btc-copy-btn">Copy</button>
+            </div>
+            <p class="pay-note">
+              Use your wallet’s latest BTC/NOK rate to calculate the amount. Always double-check the
+              address before sending.
+            </p>
+          </div>
+
+          <div class="pay-card">
+            <h3 style="margin-bottom:0.4rem;">Scan with your wallet</h3>
+            <p style="font-size:0.9rem; margin-bottom:0.35rem;">
+              Open your Bitcoin wallet and scan this QR code to fill in the address automatically:
+            </p>
+            <div class="btc-qr-wrap">
+              <img
+                class="btc-qr"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=bitcoin:3BjNYuWcg1iUKnypB8gee4ji5MQnUu3sRn"
+                alt="Bitcoin QR code for AmicBridge address"
+              />
+            </div>
+            <p class="pay-note">
+              After sending, you can share your transaction ID (txid) when you contact us, so it is easy to
+              match the payment to your request.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -758,6 +882,8 @@
 </div>
 
 <script>
+  var BTC_ADDRESS = "3BjNYuWcg1iUKnypB8gee4ji5MQnUu3sRn";
+
   document.getElementById("year").textContent = new Date().getFullYear();
 
   function goToContact(intentValue) {
@@ -804,6 +930,35 @@
     .addEventListener("click", function () {
       window.location.href = "/create-profile";
     });
+
+  // Copy BTC address to clipboard
+  var copyBtn = document.getElementById("btc-copy-btn");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(BTC_ADDRESS)
+          .then(function () {
+            alert("Bitcoin address copied to clipboard.");
+          })
+          .catch(function () {
+            alert("Could not copy address. Please copy it manually.");
+          });
+      } else {
+        // Fallback
+        var temp = document.createElement("textarea");
+        temp.value = BTC_ADDRESS;
+        document.body.appendChild(temp);
+        temp.select();
+        try {
+          document.execCommand("copy");
+          alert("Bitcoin address copied to clipboard.");
+        } catch (e) {
+          alert("Could not copy address. Please copy it manually.");
+        }
+        document.body.removeChild(temp);
+      }
+    });
+  }
 </script>
 </body>
 </html>
