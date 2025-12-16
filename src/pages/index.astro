@@ -839,5 +839,536 @@ export const prerender = true;
 
                 <div class="checkbox-row">
                   <input id="agLenderChk" type="checkbox" />
-                  <label for="agLenderChk">I confirm I am the Lender (or authorized representative) and agree to this
+                  <label for="agLenderChk">I confirm I am the Lender (or authorized representative) and agree to this agreement.</label>
+                </div>
+
+                <button class="btn-primary" type="button" id="agLenderSignBtn">Sign as Lender</button>
+                <div class="agreement-stamp" id="agLenderStamp">Not signed.</div>
+              </div>
+
+              <div class="agreement-sigbox">
+                <h3>Borrower signature</h3>
+
+                <div class="field">
+                  <label for="agBorrowerSig">Typed name</label>
+                  <input id="agBorrowerSig" placeholder="Type full legal name" />
+                </div>
+
+                <div class="checkbox-row">
+                  <input id="agBorrowerChk" type="checkbox" />
+                  <label for="agBorrowerChk">I confirm I am the Borrower (or authorized representative) and agree to this agreement.</label>
+                </div>
+
+                <button class="btn-primary" type="button" id="agBorrowerSignBtn">Sign as Borrower</button>
+                <div class="agreement-stamp" id="agBorrowerStamp">Not signed.</div>
+              </div>
+            </div>
+
+            <div class="form-note" style="margin-top: 1rem; padding: 0 1.2rem 1.2rem;">
+              Note: This template does not replace legal advice. Members are responsible for compliance, due diligence, and enforcement.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust & profile -->
+    <section class="section" id="trust">
+      <div class="shell">
+        <h2 class="section-title">Trust first. Money second.</h2>
+        <p class="section-text">
+          Before anyone thinks about sending money, AmicBridge focuses on who the person is and how clearly
+          they explain their plans. The idea is simple: serious people are happy to be transparent.
+        </p>
+
+        <div class="card-simple">
+          <h3>The AmicBridge trust profile (concept)</h3>
+          <ul>
+            <li><strong>Identity:</strong> real name and verified contact details. No anonymous borrowing.</li>
+            <li><strong>Purpose:</strong> a clear reason for the money – personal, emergency, business or investment.</li>
+            <li><strong>Repayment / sharing plan:</strong> how they plan to repay or share profit, in plain language.</li>
+            <li><strong>Income situation:</strong> basic information about work and how stable their income is.</li>
+            <li><strong>Agreement mindset:</strong> willingness to follow a written agreement and schedule.</li>
+          </ul>
+          <p style="margin-top:0.5rem;">
+            Over time, a member’s profile could also reflect completed agreements and good behaviour.
+            AmicBridge itself does not give a “credit score”, but it helps you see whether someone behaves
+            like a responsible partner.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business investment section -->
+    <section class="section" id="business">
+      <div class="shell">
+        <h2 class="section-title">Business investment &amp; shared profit.</h2>
+        <p class="section-text">
+          Some members don’t just want a one-off loan – they want partners. AmicBridge can be used to find people
+          who are willing to invest in a business and share the profit (and risk) together in a clear, documented way.
+        </p>
+
+        <div class="card-simple">
+          <h3>What “shared profit” can look like on AmicBridge</h3>
+          <p>The exact structure depends on local law and what you agree together, but the idea is simple:</p>
+          <ul>
+            <li>One person (or group) needs investment for a business or project.</li>
+            <li>Another person (or group) brings capital as a partner, not just as a lender.</li>
+            <li>You agree on how profit will be shared and how losses are handled.</li>
+            <li>Those rules are written down in a contract outside the platform.</li>
+          </ul>
+          <p style="margin-top:0.5rem;">
+            AmicBridge helps you find each other, present your project in a structured way, and keep a record of who
+            you spoke to and what was discussed. It does <strong>not</strong> guarantee returns or provide legal, tax or investment advice.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Investment strategy section -->
+    <section class="section" id="strategy">
+      <div class="shell">
+        <h2 class="section-title">Investment strategy.</h2>
+        <p class="section-text">
+          Some members are mainly interested in how to think about investment – not just one deal. AmicBridge gives
+          people a place to explore ideas and different strategies together, while everyone keeps full control of
+          their own decisions and level of risk.
+        </p>
+
+        <div class="card-simple">
+          <h3>Learn and ask, decide for yourself</h3>
+          <p>
+            AmicBridge does not give financial advice or promise returns. Instead, members can:
+          </p>
+          <ul>
+            <li>Ask questions about how others think about risk and reward.</li>
+            <li>Discuss business ideas and long-term value.</li>
+            <li>Use shared insight to shape their own investment strategy.</li>
+          </ul>
+          <p style="margin-top:0.5rem;">
+            The goal is simple: learn before you commit, and never invest blindly.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / request form -->
+    <section class="section" id="contact">
+      <div class="shell">
+        <h2 class="section-title">Send a request to join the network.</h2>
+        <p class="section-text">
+          Use this form to signal interest in AmicBridge – whether you mainly want to borrow, lend,
+          learn about investment strategy, or find partners to invest in a business and share profit together.
+        </p>
+
+        <div class="contact-grid">
+          <div class="card">
+            <form
+              id="contact-form"
+              method="POST"
+              action="https://formspree.io/f/xzznjkvd"
+            >
+              <input type="hidden" name="_subject" value="New AmicBridge network request" />
+
+              <div class="field">
+                <label for="intent">I am mainly interested in</label>
+                <select id="intent" name="intent" required>
+                  <option value="">Select an option</option>
+                  <option value="Borrowing">Borrowing</option>
+                  <option value="Lending">Lending</option>
+                  <option value="Business investment / profit sharing">Business investment / profit sharing</option>
+                  <option value="Investment strategy / learning">Investment strategy / learning</option>
+                  <option value="Both">Both borrowing and lending / investing</option>
+                </select>
+              </div>
+
+              <div class="field field-inline">
+                <div>
+                  <label for="purpose">Purpose</label>
+                  <select id="purpose" name="purpose" required>
+                    <option value="">Select purpose</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Emergency">Emergency</option>
+                    <option value="Business">Business</option>
+                    <option value="Investment">Investment</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <small>Why do you want to borrow, lend, invest or learn?</small>
+                </div>
+                <div>
+                  <label for="currency">Preferred currency or crypto</label>
+                  <input id="currency" name="currency" type="text" placeholder="e.g. EUR, NOK, USD, BTC, USDT" />
+                  <small>Only for information. Transfers happen directly between members.</small>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="income">Work / income situation</label>
+                <input id="income" name="income" type="text" placeholder="e.g. salaried job, self-employed, business owner, contract work" />
+                <small>You don’t need exact numbers – just a clear picture of how you earn money.</small>
+              </div>
+
+              <div class="field">
+                <label for="plan">Repayment or profit-sharing plan (or what you want to learn)</label>
+                <textarea id="plan" name="plan" rows="3" placeholder="How do you plan to repay or share profit – or what kind of investment strategy you are interested in?" required></textarea>
+                <small>The more concrete and realistic this is, the easier it is for others to trust you.</small>
+              </div>
+
+              <div class="field field-inline">
+                <div>
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" placeholder="Your full name" required />
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="message">Short background</label>
+                <textarea id="message" name="message" rows="3" placeholder="Tell us briefly who you are and what kind of people or opportunities you hope to connect with." required></textarea>
+              </div>
+
+              <div class="checkbox-row">
+                <input id="agreement" name="agreement" type="checkbox" required />
+                <label for="agreement">
+                  I understand that any agreement must be written clearly between the people involved, and that I am responsible for my own legal, financial and tax decisions.
+                </label>
+              </div>
+
+              <button class="btn-primary" type="submit" style="margin-top:0.9rem;">Send request</button>
+              <div class="form-note">
+                This form does not create an account, offer, contract or any promise of funding or returns.
+                Please do not include sensitive data (ID numbers, passwords, private keys, seed phrases, etc.).
+              </div>
+            </form>
+          </div>
+
+          <div class="side-note">
+            <strong>How we think about “trust”.</strong>
+            <p>
+              Trust on AmicBridge is not about a magic score. It is about how seriously a person treats responsibility:
+              whether they show their identity, explain their purpose, and describe a realistic plan.
+            </p>
+            <p style="margin-top:0.6rem;">
+              The platform’s job is to collect that information in a structured way so both sides can decide for themselves.
+              All actual agreements, contracts and transfers stay outside the platform.
+            </p>
+            <p style="margin-top:0.8rem;">
+              AmicBridge is not a bank and does not issue financial products. All agreements happen privately between members.
+            </p>
+            <p style="margin-top:0.8rem;">
+              <strong>Contact the founder &amp; CEO</strong><br>
+              Robert &mdash; <a href="mailto:robertamicolsen@gmail.com">robertamicolsen@gmail.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bitcoin Payment Section -->
+    <section class="section" id="payment">
+      <div class="shell">
+        <h2 class="section-title">Pay with Bitcoin.</h2>
+        <p class="section-text">
+          For certain services or contributions, you can send payment directly in Bitcoin. Transfers go
+          straight from your wallet to the AmicBridge wallet – no intermediaries.
+        </p>
+
+        <div class="pay-grid">
+          <div class="pay-card">
+            <h3 style="margin-bottom:0.4rem;">Payment details</h3>
+            <p style="font-size:0.95rem; margin-bottom:0.3rem;">
+              Amount: <strong>2500 NOK</strong> (BTC equivalent at the time of payment)
+            </p>
+            <p style="font-size:0.9rem; margin-bottom:0.35rem;">
+              Send BTC to this address:
+            </p>
+            <div class="btc-address-box">
+              <span class="btc-address-text" id="btc-address">
+                3BjNYuWcg1iUKnypB8gee4ji5MQnUu3sRn
+              </span>
+              <button type="button" class="btc-copy-btn" id="btc-copy-btn">Copy</button>
+            </div>
+            <p class="pay-note">
+              Use your wallet’s latest BTC/NOK rate to calculate the amount. Always double-check the
+              address before sending.
+            </p>
+          </div>
+
+          <div class="pay-card">
+            <h3 style="margin-bottom:0.4rem;">Scan with your wallet</h3>
+            <p style="font-size:0.9rem; margin-bottom:0.35rem;">
+              Open your Bitcoin wallet and scan this QR code to fill in the address automatically:
+            </p>
+            <div class="btc-qr-wrap">
+              <img
+                class="btc-qr"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=bitcoin:3BjNYuWcg1iUKnypB8gee4ji5MQnUu3sRn"
+                alt="Bitcoin QR code for AmicBridge address"
+              />
+            </div>
+            <p class="pay-note">
+              After sending, you can share your transaction ID (txid) when you contact us, so it is easy to
+              match the payment to your request.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="shell footer-inner">
+      <div>
+        © <span id="year"></span> AmicBridge. All rights reserved.
+        &nbsp;|&nbsp;
+        CEO: Robert &mdash;
+        <a href="mailto:robertamicolsen@gmail.com">robertamicolsen@gmail.com</a>
+      </div>
+      <div>
+        <a href="#terms">Terms</a> · <a href="#privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  var BTC_ADDRESS = "3BjNYuWcg1iUKnypB8gee4ji5MQnUu3sRn";
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  function goToContact(intentValue) {
+    var select = document.getElementById("intent");
+    if (select && intentValue) {
+      select.value = intentValue;
+    }
+    var contact = document.getElementById("contact");
+    if (contact && contact.scrollIntoView) {
+      contact.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  document.getElementById("btn-request-loan")
+    .addEventListener("click", function () {
+      goToContact("Borrowing");
+    });
+
+  document.getElementById("btn-offer-lending")
+    .addEventListener("click", function () {
+      goToContact("Lending");
+    });
+
+  document.getElementById("btn-business-invest")
+    .addEventListener("click", function () {
+      goToContact("Business investment / profit sharing");
+    });
+
+  document.getElementById("btn-invest-strategy")
+    .addEventListener("click", function () {
+      goToContact("Investment strategy / learning");
+      var strategy = document.getElementById("strategy");
+      if (strategy && strategy.scrollIntoView) {
+        strategy.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+
+  document.getElementById("btn-join-nav")
+    .addEventListener("click", function () {
+      goToContact("");
+    });
+
+  document.getElementById("btn-create-profile")
+    .addEventListener("click", function () {
+      window.location.href = "/create-profile";
+    });
+
+  // Copy BTC address to clipboard
+  var copyBtn = document.getElementById("btc-copy-btn");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(BTC_ADDRESS)
+          .then(function () {
+            alert("Bitcoin address copied to clipboard.");
+          })
+          .catch(function () {
+            alert("Could not copy address. Please copy it manually.");
+          });
+      } else {
+        // Fallback
+        var temp = document.createElement("textarea");
+        temp.value = BTC_ADDRESS;
+        document.body.appendChild(temp);
+        temp.select();
+        try {
+          document.execCommand("copy");
+          alert("Bitcoin address copied to clipboard.");
+        } catch (e) {
+          alert("Could not copy address. Please copy it manually.");
+        }
+        document.body.removeChild(temp);
+      }
+    });
+  }
+
+  // === Loan Agreement logic ===
+  (function () {
+    function $(id) { return document.getElementById(id); }
+
+    var agState = {
+      locked: false,
+      lenderSigned: false,
+      borrowerSigned: false,
+      id: null
+    };
+
+    function randomId(){
+      var a = Math.random().toString(16).slice(2, 8).toUpperCase();
+      var b = Math.random().toString(16).slice(2, 8).toUpperCase();
+      return "AB-" + a + "-" + b;
+    }
+
+    function nowStamp(){
+      var d = new Date();
+      return d.toISOString().replace("T"," ").slice(0,19) + " UTC";
+    }
+
+    function today(){
+      var d = new Date();
+      var yyyy = d.getFullYear();
+      var mm = String(d.getMonth() + 1).padStart(2, "0");
+      var dd = String(d.getDate()).padStart(2, "0");
+      return yyyy + "-" + mm + "-" + dd;
+    }
+
+    function esc(str){
+      return String(str || "").replace(/[&<>"']/g, function (m) {
+        return ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" })[m];
+      });
+    }
+
+    function setLocked(disabled){
+      [
+        "agDate","agJurisdiction","agLenderName","agLenderAddr","agBorrowerName","agBorrowerAddr",
+        "agPrincipal","agCurrency","agRate","agRateType","agSchedule","agDue","agPayment","agCollateral"
+      ].forEach(function(id){
+        var el = $(id);
+        if (el) el.disabled = disabled;
+      });
+    }
+
+    function renderAgreement(){
+      var date = $("agDate").value || "[Date]";
+      var juris = $("agJurisdiction").value || "[Jurisdiction]";
+      var lenderName = $("agLenderName").value || "[Lender Name]";
+      var lenderAddr = $("agLenderAddr").value || "[Lender Address]";
+      var borrowerName = $("agBorrowerName").value || "[Borrower Name]";
+      var borrowerAddr = $("agBorrowerAddr").value || "[Borrower Address]";
+      var principal = $("agPrincipal").value || "[Amount]";
+      var currency = $("agCurrency").value || "[Currency]";
+      var rate = $("agRate").value || "[Rate]";
+      var rateType = $("agRateType").value || "[Simple/Compound/None]";
+      var schedule = $("agSchedule").value || "[Schedule]";
+      var due = $("agDue").value || "[Final Due Date]";
+      var payment = $("agPayment").value || "[Payment instructions]";
+      var collateral = $("agCollateral").value || "None";
+
+      $("agText").innerHTML =
+        "<p><strong>LOAN AGREEMENT</strong> (Independent Parties – Platform Not a Party)</p>" +
+        "<p>This Agreement is entered into on <strong>" + esc(date) + "</strong> by and between:</p>" +
+
+        "<h3>1. Parties</h3>" +
+        "<p><strong>Lender:</strong> " + esc(lenderName) + "<br><span style='color:#6b7280'>Address:</span> " + esc(lenderAddr) + "</p>" +
+        "<p><strong>Borrower:</strong> " + esc(borrowerName) + "<br><span style='color:#6b7280'>Address:</span> " + esc(borrowerAddr) + "</p>" +
+
+        "<h3>2. Loan Amount</h3>" +
+        "<p>The Lender agrees to loan the Borrower the principal sum of <strong>" + esc(principal) + " " + esc(currency) + "</strong> (“Loan”).</p>" +
+
+        "<h3>3. Interest</h3>" +
+        "<p>The Loan bears interest at <strong>" + esc(rate) + "%</strong> per year, interest type: <strong>" + esc(rateType) + "</strong>, subject to applicable law.</p>" +
+
+        "<h3>4. Repayment</h3>" +
+        "<p><strong>Schedule:</strong> " + esc(schedule) + "<br>" +
+        "<strong>Final due date:</strong> " + esc(due) + "<br>" +
+        "<strong>Payment method:</strong> " + esc(payment) + "</p>" +
+
+        "<h3>5. Collateral / Security</h3>" +
+        "<p>" + esc(collateral) + "</p>" +
+
+        "<h3>6. Default</h3>" +
+        "<p>A default occurs if the Borrower fails to pay when due or breaches a material term. The Lender may pursue remedies permitted by law.</p>" +
+
+        "<h3>7. No Platform Involvement (AmicBridge Not a Party)</h3>" +
+        "<p>The Parties agree that <strong>AmicBridge.com</strong> is not a party to this Agreement and does not act as lender, borrower, broker, agent, advisor, custodian, escrow, or fiduciary; does not verify terms; and does not guarantee repayment. Any dispute is solely between the Parties.</p>" +
+
+        "<h3>8. Governing Law</h3>" +
+        "<p>This Agreement is governed by the laws of <strong>" + esc(juris) + "</strong>.</p>" +
+
+        "<h3>9. Entire Agreement</h3>" +
+        "<p>This document is the entire agreement between the Parties. Amendments must be in writing and signed by both Parties.</p>" +
+
+        "<p style='margin-top:0.8rem;color:#6b7280;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;'>" +
+        "Agreement ID: " + esc(agState.id) + "</p>";
+    }
+
+    function lockAgreement(){
+      agState.locked = true;
+      setLocked(true);
+      $("agStatus").textContent = "Locked (ready to sign)";
+    }
+
+    function sign(which){
+      if (!agState.locked) {
+        alert("Lock the agreement first so the terms cannot be edited after signing.");
+        return;
+      }
+
+      if (which === "lender") {
+        if (!$("agLenderChk").checked) return alert("Lender must check the confirmation box.");
+        if (!$("agLenderSig").value.trim()) return alert("Lender must type their full legal name.");
+        agState.lenderSigned = true;
+        $("agLenderStamp").textContent = "Signed by " + $("agLenderSig").value.trim() + " on " + nowStamp() + ".";
+      }
+
+      if (which === "borrower") {
+        if (!$("agBorrowerChk").checked) return alert("Borrower must check the confirmation box.");
+        if (!$("agBorrowerSig").value.trim()) return alert("Borrower must type their full legal name.");
+        agState.borrowerSigned = true;
+        $("agBorrowerStamp").textContent = "Signed by " + $("agBorrowerSig").value.trim() + " on " + nowStamp() + ".";
+      }
+
+      if (agState.lenderSigned && agState.borrowerSigned) {
+        $("agStatus").textContent = "Fully signed";
+      }
+    }
+
+    // Init once
+    agState.id = randomId();
+    $("agId").textContent = agState.id;
+
+    // Wire buttons
+    $("agToday").addEventListener("click", function(){ $("agDate").value = today(); renderAgreement(); });
+    $("agPrint").addEventListener("click", function(){ window.print(); });
+    $("agLock").addEventListener("click", lockAgreement);
+    $("agLenderSignBtn").addEventListener("click", function(){ sign("lender"); });
+    $("agBorrowerSignBtn").addEventListener("click", function(){ sign("borrower"); });
+
+    // Re-render on input changes
+    [
+      "agDate","agJurisdiction","agLenderName","agLenderAddr","agBorrowerName","agBorrowerAddr",
+      "agPrincipal","agCurrency","agRate","agRateType","agSchedule","agDue","agPayment","agCollateral"
+    ].forEach(function(id){
+      var el = $(id);
+      if (el) el.addEventListener("input", renderAgreement);
+    });
+
+    renderAgreement();
+  })();
+</script>
+</body>
+</html>
 
