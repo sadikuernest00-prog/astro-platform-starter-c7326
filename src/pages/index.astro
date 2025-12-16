@@ -507,7 +507,7 @@ export const prerender = true;
       .steps-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
-    /* === Loan Agreement styles === */
+    /* === Loan Agreement styles (added) === */
     .agreement-wrap { margin-top: 1rem; }
 
     .agreement-card{
@@ -723,7 +723,7 @@ export const prerender = true;
       </div>
     </section>
 
-    <!-- Loan Agreement (embedded on homepage) -->
+    <!-- Loan Agreement (added) -->
     <section class="section" id="loan-agreement">
       <div class="shell">
         <h2 class="section-title">Loan agreement (template + signing)</h2>
@@ -1215,7 +1215,7 @@ export const prerender = true;
     });
   }
 
-  // === Loan Agreement logic ===
+  // === Loan Agreement logic (added) ===
   (function () {
     function $(id) { return document.getElementById(id); }
 
@@ -1246,8 +1246,8 @@ export const prerender = true;
     }
 
     function esc(str){
-      return String(str || "").replace(/[&<>"']/g, function (m) {
-        return ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" })[m];
+      return String(str || "").replace(/[&<>\"']/g, function (m) {
+        return ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;" })[m];
       });
     }
 
